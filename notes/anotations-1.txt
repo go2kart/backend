@@ -1,0 +1,13 @@
+java
+
+@bean - <ask chatgpt>
+@Component creates a bean in the springboot and then springboot manages it itself
+@RequestMapping fire up the method or class when url hits Eg- @RequestMapping("/about")
+
+@Controller combination of @Component and @RequestMapping 
+@Controller methods return view/html pages.
+
+@Controller: for returning simple string or object use @ResponseBody above the method and below @RequestMapping("/about")
+
+@RestController: combination of @Controller and @ResponseBody 
+@RestController: use it above the class and just use @RequestMapping("/about") above the method
