@@ -1,0 +1,3 @@
+ancestorEntries = []
+ourEntries = ["pom.xml", "src/main/resources/application.properties"]
+theirEntries = ["pom.xml", "src/main/resources/application.properties"]
