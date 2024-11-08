@@ -9,5 +9,4 @@ public class Go2kartApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(Go2kartApplication.class, args);
 	}
-
 }

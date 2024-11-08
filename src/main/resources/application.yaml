@@ -1,0 +1,18 @@
+logging:
+  file:
+    name: ./logs/application.log
+    
+
+---
+server:
+    port: 8080  
+
+spring:
+    application:
+        name: go2kart
+    servlet:
+        multipart:
+            max-file-size: 10MB # file upload size
+            max-request-size: 10MB
+    profiles:
+        active: prod

@@ -5,6 +5,7 @@ public String addUser( @RequestBody Map<String,Object> user){
 	System.out.println(user);
 	return "user added"
 }
+@RequestMapping("/add-user" , method = RequestMethod.GET)
 
 @RequestParam : used to receive form data/query parameter 
 
