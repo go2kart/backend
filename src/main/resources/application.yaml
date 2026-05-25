@@ -16,7 +16,7 @@ spring:
         default-context: go2kart/mysql
 
   datasource:
-    url: jdbc:mysql://mysql:3306/${DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&authenticationPlugin=caching_sha2_password
+    url: jdbc:mysql://${DB_HOSTNAME}:3306/${DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&authenticationPlugin=caching_sha2_password
     username: ${DB_USER}
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
