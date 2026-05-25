@@ -1,18 +1,69 @@
-logging:
-  file:
-    name: ./logs/application.log
-    
-
----
-server:
-    port: 8080  
-
 spring:
-    application:
-        name: go2kart
-    servlet:
-        multipart:
-            max-file-size: 10MB # file upload size
-            max-request-size: 10MB
-    profiles:
-        active: prod
+  application:
+    name: go2kart
+
+  config:
+    import: vault://
+
+  cloud:
+    vault:
+      uri: ${VAULT_URI}
+      token: ${VAULT_TOKEN}
+
+      kv:
+        enabled: true
+        backend: secret
+        default-context: go2kart/mysql
+
+  datasource:
+    url: jdbc:mysql://mysql:3306/${DATABASE}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&authenticationPlugin=caching_sha2_password
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    open-in-view: false
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+    default-property-inclusion: non_null
+
+  security:
+    user:
+      password: unused
+
+  servlet:
+    multipart:
+      max-file-size: 1MB
+      max-request-size: 1MB
+
+server:
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiry-ms: 86400000
+
+aws:
+  region: us-east-1
+
+  s3:
+    bucket: gotokart-product-images-035379289330-us-east-1-an
+    public-base-url:
+    presign-ttl-seconds: 300

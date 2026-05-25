@@ -1,0 +1,12 @@
+services:
+  app:
+    image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VAULT_URI: ${VAULT_URI}
+        VAULT_TOKEN: ${VAULT_TOKEN}
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
